@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    container_name: ascii_paint_tests
+    # Запускает все три тестовых бинарника подряд
+    command: sh -c "./tests/test_canvas && ./tests/test_paint_context && ./tests/test_scenarios"

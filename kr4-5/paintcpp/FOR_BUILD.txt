@@ -1,0 +1,23 @@
+-Сборка и запуск программы (Windows)
+cmake -S . -B build
+cmake --build build
+cd build
+./ascii_paint.exe
+
+-Запуск тестов (Windows)
+cmake -S . -B build
+cmake --build build
+cd build
+ctest --output-on-failure
+
+-Docker: сборка образа
+docker build -t ascii_paint .
+
+-Docker: запуск редактора (стрелки работают!)
+docker run --rm -it ascii_paint
+
+-Docker: запуск только тестов
+docker run --rm ascii_paint sh -c "./tests/test_canvas && ./tests/test_paint_context && ./tests/test_scenarios"
+
+-Docker Compose
+docker-compose up --build
